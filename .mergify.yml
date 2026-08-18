@@ -12,7 +12,7 @@ queue_rules:
     batch_size: 1
     merge_method: squash
     queue_conditions:
-      - label = lab-queue
+      - label = pr-config-only
     merge_conditions:
       - label = human-merge-approved
       - check-success = controlled-ci
