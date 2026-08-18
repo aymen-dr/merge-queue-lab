@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Controlled failing trusted check
         run: |
-          echo "Controlled 90-second observation window for MRG-SCOPES-STALE-HEAD-001"
-          sleep 90
+          echo "Controlled 300-second observation window for MRG-SCOPES-STALE-HEAD-001"
+          sleep 300
           echo "Expected fail-closed result after observation window"
           exit 1
