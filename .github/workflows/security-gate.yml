@@ -13,5 +13,7 @@ jobs:
     steps:
       - name: Controlled failing trusted check
         run: |
-          echo "Expected failure for MRG-CHECK-APP-IDENTITY-001"
+          echo "Controlled 90-second observation window for MRG-SCOPES-STALE-HEAD-001"
+          sleep 90
+          echo "Expected fail-closed result after observation window"
           exit 1
