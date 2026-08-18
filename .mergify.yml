@@ -55,7 +55,7 @@ queue_rules:
 
   - name: integrity-batch-lab
     batch_size: 2
-    batch_max_wait_time: 30 sec
+    batch_max_wait_time: 10 min
     merge_method: squash
     queue_conditions:
       - label = integrity-batch
