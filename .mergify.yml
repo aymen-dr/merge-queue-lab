@@ -62,3 +62,13 @@ queue_rules:
     merge_conditions:
       - label = human-merge-approved
       - check-success = controlled-ci
+
+  - name: check-app-lab
+    batch_size: 1
+    merge_method: squash
+    queue_conditions:
+      - label = check-app-lab
+      - check-success = @github-actions/security-gate
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = @github-actions/security-gate

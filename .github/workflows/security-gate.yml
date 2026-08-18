@@ -1,0 +1,17 @@
+name: security-gate-workflow
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  security-gate:
+    name: security-gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Controlled failing trusted check
+        run: |
+          echo "Expected failure for MRG-CHECK-APP-IDENTITY-001"
+          exit 1
