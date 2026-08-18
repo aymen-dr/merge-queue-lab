@@ -1,0 +1,7 @@
+pull_request_rules:
+  - name: Untrusted fallback-path canary
+    conditions:
+      - label = fallback-config-probe
+    actions:
+      comment:
+        message: MRG-UNTRUSTED-FALLBACK-CONFIG-EXECUTED
