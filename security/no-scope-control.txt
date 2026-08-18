@@ -1,0 +1,1 @@
+fresh PR negative control: no manual scope upload
