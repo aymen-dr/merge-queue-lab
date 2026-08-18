@@ -1,0 +1,18 @@
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
+  skip_intermediate_results: false
+
+scopes:
+  source:
+    manual:
+
+queue_rules:
+  - name: controlled-lab
+    batch_size: 1
+    merge_method: squash
+    queue_conditions:
+      - label = lab-queue
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = controlled-ci

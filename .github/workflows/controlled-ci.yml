@@ -1,0 +1,22 @@
+name: controlled-ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "mergify/**"
+
+permissions:
+  contents: read
+
+jobs:
+  controlled-ci:
+    name: controlled-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record the exact commit under test
+        run: |
+          printf 'event=%s\n' "$GITHUB_EVENT_NAME"
+          printf 'sha=%s\n' "$GITHUB_SHA"
+          printf 'ref=%s\n' "$GITHUB_REF"
