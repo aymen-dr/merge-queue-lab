@@ -6,12 +6,9 @@ merge_queue:
 scopes:
   source:
     files:
-      integrity-a:
+      integrity:
         include:
-          - fixtures/integrity-a.txt
-      integrity-b:
-        include:
-          - fixtures/integrity-b.txt
+          - fixtures/integrity-*.txt
       stack-a:
         include:
           - fixtures/stack-a.txt
@@ -58,6 +55,7 @@ queue_rules:
 
   - name: integrity-batch-lab
     batch_size: 2
+    batch_max_wait_time: 30 sec
     merge_method: squash
     queue_conditions:
       - label = integrity-batch
