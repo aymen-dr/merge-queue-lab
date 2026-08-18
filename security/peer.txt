@@ -1,0 +1,1 @@
+Controlled security-scope peer canary for stale-scope dependency validation.
