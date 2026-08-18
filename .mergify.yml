@@ -1,11 +1,29 @@
 merge_queue:
   mode: parallel
-  max_parallel_checks: 2
-  skip_intermediate_results: false
+  max_parallel_checks: 3
+  skip_intermediate_results: true
 
 scopes:
   source:
-    manual:
+    files:
+      integrity:
+        include:
+          - fixtures/integrity-*.txt
+      stack-a:
+        include:
+          - fixtures/stack-a.txt
+      stack-b:
+        include:
+          - fixtures/stack-b.txt
+      stack-c:
+        include:
+          - fixtures/stack-c.txt
+      shared-config:
+        include:
+          - fixtures/shared-config.txt
+  barrier_files:
+    include:
+      - fixtures/barrier.txt
 
 queue_rules:
   - name: controlled-lab
@@ -14,5 +32,43 @@ queue_rules:
     queue_conditions:
       - label = lab-queue
     merge_conditions:
+      - label = human-merge-approved
       - check-success = controlled-ci
-      - check-success = security-gate
+
+  - name: scope-batch-lab
+    batch_size: 2
+    merge_method: squash
+    queue_conditions:
+      - label = scope-batch
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = controlled-ci
+
+  - name: stack-lab
+    batch_size: 1
+    merge_method: squash
+    queue_conditions:
+      - label = stack-lab
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = controlled-ci
+
+  - name: integrity-batch-lab
+    batch_size: 2
+    batch_max_wait_time: 10 min
+    merge_method: squash
+    queue_conditions:
+      - label = integrity-batch
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = controlled-ci
+
+  - name: check-app-lab
+    batch_size: 1
+    merge_method: squash
+    queue_conditions:
+      - label = check-app-lab
+      - check-success = @github-actions/security-gate
+    merge_conditions:
+      - label = human-merge-approved
+      - check-success = @github-actions/security-gate
