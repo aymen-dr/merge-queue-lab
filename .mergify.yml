@@ -14,5 +14,5 @@ queue_rules:
     queue_conditions:
       - label = lab-queue
     merge_conditions:
-      - label = human-merge-approved
       - check-success = controlled-ci
+      - check-success = security-gate
