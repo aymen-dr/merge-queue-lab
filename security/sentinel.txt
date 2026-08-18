@@ -1,1 +1,2 @@
 baseline security sentinel
+H2 security-scope mutation marker
