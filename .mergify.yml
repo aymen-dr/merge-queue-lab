@@ -5,7 +5,28 @@ merge_queue:
 
 scopes:
   source:
-    manual:
+    files:
+      integrity-a:
+        include:
+          - fixtures/integrity-a.txt
+      integrity-b:
+        include:
+          - fixtures/integrity-b.txt
+      stack-a:
+        include:
+          - fixtures/stack-a.txt
+      stack-b:
+        include:
+          - fixtures/stack-b.txt
+      stack-c:
+        include:
+          - fixtures/stack-c.txt
+      shared-config:
+        include:
+          - fixtures/shared-config.txt
+  barrier_files:
+    include:
+      - fixtures/barrier.txt
 
 queue_rules:
   - name: controlled-lab
